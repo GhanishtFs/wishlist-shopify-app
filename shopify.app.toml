@@ -3,7 +3,7 @@
 client_id = "7f82d2408490b4ac6eccb71c70068742"
 name = "fsoft-wishlist"
 handle = "fsoft-wishlist"
-application_url = "https://flood-verification-nations-tyler.trycloudflare.com"
+application_url = "https://microphone-gerald-continuously-master.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://flood-verification-nations-tyler.trycloudflare.com/auth/callback",
-  "https://flood-verification-nations-tyler.trycloudflare.com/auth/shopify/callback",
-  "https://flood-verification-nations-tyler.trycloudflare.com/api/auth/callback"
+  "https://microphone-gerald-continuously-master.trycloudflare.com/auth/callback",
+  "https://microphone-gerald-continuously-master.trycloudflare.com/auth/shopify/callback",
+  "https://microphone-gerald-continuously-master.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

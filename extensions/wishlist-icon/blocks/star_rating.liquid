@@ -1,3 +1,4 @@
+{% if template.name == "product" %}
 <div class="wishlist-inspire__icon" x-data="wishlist">
   <button type="button" @click.debounce="addToWishlist">
     <svg class="wishlist-inspire__icon--svg" viewBox="0 0 24 24" stroke-width="2" stroke="#000" :fill="wishlisted ? '#000': '#fff' ">
@@ -15,7 +16,7 @@
   document.addEventListener('alpine:init', () => {
     Alpine.data('wishlist', () => ({
       wishlisted: false,
-      appUrl: "https://flood-verification-nations-tyler.trycloudflare.com/",
+      appUrl: "https://microphone-gerald-continuously-master.trycloudflare.com/",
       init() {
         fetch(this.appUrl + "api/wishlist?customerId={{ customer.id }}&productId={{ product.id }}&shop={{ shop.permanent_domain }}")
           .then(response => response.json())
@@ -75,29 +76,106 @@
   }
 </style>
 
+
+{%  elsif  template.name == "page" %}
+  {% if page.title == "Wishlist" %}
+    <style>
+      .wishlisted__products__container{
+        display:flex;
+        gap:2rem;
+        flex-wrap:wrap;
+        padding:2rem;
+      }
+      .product__card, .product__price{
+        display:flex;
+        flex-direction:column;
+      }
+      .product__card{
+        flex:1;
+      }
+      .product__image__container{
+      overflow: hidden;
+        height:auto;
+        width: auto;
+      }
+      .product__image{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .product__price{
+    font-weight:bold;}
+      .product__url{
+        text-decoration:none;
+        color:black;
+      }
+  </style>
+  
+  {% if customer %}
+    <div id="api-response"></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', onLoadFunction);
+  
+      function onLoadFunction() {
+          var customerId = "{{ customer.id }}";
+          var shop = "{{ shop.permanent_domain }}";
+          var apiUrl = 'https://microphone-gerald-continuously-master.trycloudflare.com/api/customerWishlist?customerId=' + customerId + '&shop=' + shop;
+  
+          fetch(apiUrl)
+              .then(response => response.text())
+              .then(data => {
+                  document.getElementById('api-response').innerHTML = data;
+              })
+              .catch(error => console.error('Error fetching data:', error));
+      }
+  
+      function deleteItem(productId) {
+          var customerId = "{{ customer.id }}";
+          var shop = "{{ shop.permanent_domain }}";
+  
+          fetch('https://microphone-gerald-continuously-master.trycloudflare.com/api/deleteItem?customerId=' + customerId + '&shop=' + shop + '&productId=' + productId)
+              .then(response => {
+                  if (response.ok) {
+                      onLoadFunction();
+                  } else {
+                      console.error('Error deleting item:', response.statusText);
+                  }
+              })
+              .catch(error => console.error('Error deleting item:', error));
+      }
+    </script>
+  
+  {% else %}
+    Please Login
+  {% endif %}
+  {% endif %}
+{% endif %}
+
+
 {% schema %}
-{
-  "name": "Wishlist icon",
-  "target": "section",
-  "settings": [
-    {
-      "type": "product",
-      "id": "product",
-      "label": "Product",
-      "autofill": true
-    },
-    {
-      "type": "text",
-      "id": "text",
-      "label": "Text",
-      "default": "Add to wishlist"
-    },
-    {
-      "type": "color",
-      "id": "colour",
-      "label": "Icon Colour",
-      "default": "#ff0000"
-    }
-  ]
-}
-{% endschema %}
+  {
+    "name": "Wishlist icon",
+    "target": "section",
+    "settings": [
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product",
+        "autofill": true
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Text",
+        "default": "Add to wishlist"
+      },
+      {
+        "type": "color",
+        "id": "colour",
+        "label": "Icon Colour",
+        "default": "#ff0000"
+      }
+    ]
+  }
+  {% endschema %}
