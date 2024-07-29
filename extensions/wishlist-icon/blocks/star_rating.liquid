@@ -16,7 +16,7 @@
   document.addEventListener('alpine:init', () => {
     Alpine.data('wishlist', () => ({
       wishlisted: false,
-      appUrl: "https://microphone-gerald-continuously-master.trycloudflare.com/",
+      appUrl: "https://cosmetics-malta-farming-ricky.trycloudflare.com/",
       init() {
         fetch(this.appUrl + "api/wishlist?customerId={{ customer.id }}&productId={{ product.id }}&shop={{ shop.permanent_domain }}")
           .then(response => response.json())
@@ -76,8 +76,7 @@
   }
 </style>
 
-
-{%  elsif  template.name == "page" %}
+{%  elsif  template.name contains "page" %}
   {% if page.title == "Wishlist" %}
     <style>
       .wishlisted__products__container{
@@ -120,7 +119,7 @@
       function onLoadFunction() {
           var customerId = "{{ customer.id }}";
           var shop = "{{ shop.permanent_domain }}";
-          var apiUrl = 'https://microphone-gerald-continuously-master.trycloudflare.com/api/customerWishlist?customerId=' + customerId + '&shop=' + shop;
+          var apiUrl = 'https://cosmetics-malta-farming-ricky.trycloudflare.com/api/customerWishlist?customerId=' + customerId + '&shop=' + shop;
   
           fetch(apiUrl)
               .then(response => response.text())
@@ -134,7 +133,7 @@
           var customerId = "{{ customer.id }}";
           var shop = "{{ shop.permanent_domain }}";
   
-          fetch('https://microphone-gerald-continuously-master.trycloudflare.com/api/deleteItem?customerId=' + customerId + '&shop=' + shop + '&productId=' + productId)
+          fetch('https://cosmetics-malta-farming-ricky.trycloudflare.com/api/deleteItem?customerId=' + customerId + '&shop=' + shop + '&productId=' + productId)
               .then(response => {
                   if (response.ok) {
                       onLoadFunction();

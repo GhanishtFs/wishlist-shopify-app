@@ -3,7 +3,7 @@
 client_id = "7f82d2408490b4ac6eccb71c70068742"
 name = "fsoft-wishlist"
 handle = "fsoft-wishlist"
-application_url = "https://microphone-gerald-continuously-master.trycloudflare.com"
+application_url = "https://cosmetics-malta-farming-ricky.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://microphone-gerald-continuously-master.trycloudflare.com/auth/callback",
-  "https://microphone-gerald-continuously-master.trycloudflare.com/auth/shopify/callback",
-  "https://microphone-gerald-continuously-master.trycloudflare.com/api/auth/callback"
+  "https://cosmetics-malta-farming-ricky.trycloudflare.com/auth/callback",
+  "https://cosmetics-malta-farming-ricky.trycloudflare.com/auth/shopify/callback",
+  "https://cosmetics-malta-farming-ricky.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
